@@ -5,7 +5,7 @@ Add the following before the `makedocs` command:
 ```julia
 # download the themes
 for file in ("juliadynamics-lightdefs.scss", "juliadynamics-darkdefs.scss", "juliadynamics-style.scss")
-    download("https://github.com/JuliaDynamics/doctheme/blob/master/$file", file)
+    download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/$file", joinpath(@__DIR__, file))
 end
 # create the themes
 for w in ("light", "dark")
@@ -23,7 +23,7 @@ Lastly, because we are using Google fonts, use
 format = Documenter.HTML(
     assets = [
         "assets/logo.ico",
-        asset("https://fonts.googleapis.com/css?family=Quicksand|Montserrat|Source+Code+Pro|Lora&display=swap", class=:css),
+        asset("https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro&display=swap", class=:css),
         ],
     ),
 ```
