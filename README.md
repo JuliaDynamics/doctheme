@@ -1,8 +1,11 @@
 # Documentation theme for the packages of JuliaDynamics
 
+*(requires at least documenter `v0.24.6`)*
+
 Add the following before the `makedocs` command:
 
 ```julia
+using DocumenterTools: Themes
 # download the themes
 for file in ("juliadynamics-lightdefs.scss", "juliadynamics-darkdefs.scss", "juliadynamics-style.scss")
     download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/$file", joinpath(@__DIR__, file))
@@ -22,7 +25,6 @@ Lastly, because we are using Google fonts, use
 ```julia
 format = Documenter.HTML(
     assets = [
-        "assets/logo.ico",
         asset("https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro&display=swap", class=:css),
         ],
     ),
