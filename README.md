@@ -5,28 +5,27 @@
 Add the following before the `makedocs` command:
 
 ```julia
-using DocumenterTools: Themes
-# download the themes
-for file in ("juliadynamics-lightdefs.scss", "juliadynamics-darkdefs.scss", "juliadynamics-style.scss")
-    download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/$file", joinpath(@__DIR__, file))
-end
-# create the themes
-for w in ("light", "dark")
-    header = read(joinpath(@__DIR__, "juliadynamics-style.scss"), String)
-    theme = read(joinpath(@__DIR__, "juliadynamics-$(w)defs.scss"), String)
-    write(joinpath(@__DIR__, "juliadynamics-$(w).scss"), header*"\n"*theme)
-end
-# compile the themes
-Themes.compile(joinpath(@__DIR__, "juliadynamics-light.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-light.css"))
-Themes.compile(joinpath(@__DIR__, "juliadynamics-dark.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-dark.css"))
-```
+cd(@__DIR__)
+CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
 
-Lastly, because we are using Google fonts, use
+download(
+    "https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/apply_style.jl",
+    joinpath(@__DIR__, "apply_style.jl")
+)
+include("apply_style.jl")
+
+using PackageName
+```
+and the theme will be applied automatically.
+
+Because we are using Google fonts, also use use
 ```julia
 format = Documenter.HTML(
+    prettyurls = CI,
     assets = [
         asset("https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro&display=swap", class=:css),
-        ],
-    ),
+    ],
+    collapselevel = 3,
+)
 ```
-as argument to `makedocs`.
+as a keyword argument to `makedocs`.
