@@ -9,7 +9,8 @@ Then, in the `docs/make.jl` file add the following at the start of the file:
 ```julia
 cd(@__DIR__)
 
-download(
+import Downloads
+Downloads.download(
     "https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/apply_style.jl",
     joinpath(@__DIR__, "apply_style.jl")
 )

@@ -4,8 +4,9 @@ using Documenter
 using DocumenterTools: Themes
 ENV["JULIA_DEBUG"] = "Documenter"
 # download the themes
+import Downloads
 for file in ("juliaclimate-lightdefs.scss", "juliaclimate-darkdefs.scss", "juliaclimate-style.scss")
-    download("https://raw.githubusercontent.com/JuliaClimate/doctheme/master/$file", joinpath(@__DIR__, file))
+    Downloads.download("https://raw.githubusercontent.com/JuliaClimate/doctheme/master/$file", joinpath(@__DIR__, file))
 end
 # create the themes
 for w in ("light", "dark")
@@ -18,5 +19,5 @@ Themes.compile(joinpath(@__DIR__, "juliaclimate-light.scss"), joinpath(@__DIR__,
 Themes.compile(joinpath(@__DIR__, "juliaclimate-dark.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-dark.css"))
 # Download and apply CairoMakie plotting style
 using CairoMakie
-download("https://raw.githubusercontent.com/JuliaClimate/doctheme/master/style.jl", joinpath(@__DIR__, file))
+Downloads.download("https://raw.githubusercontent.com/JuliaClimate/doctheme/master/style.jl", joinpath(@__DIR__, file))
 include("style.jl")
