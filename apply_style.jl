@@ -1,3 +1,4 @@
+CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
 # Load documenter
 using Documenter
 using DocumenterTools: Themes

@@ -2,11 +2,12 @@
 
 *(requires at least documenter `v0.24.6`)*
 
-Add the following before the `makedocs` command:
+To use the style, first ensure that `Documenter, DocumenterTools, CairoMakie` are in the `docs/Project.toml` file of the repo.
+
+Then, in the `docs/make.jl` file add the following at the start of the file:
 
 ```julia
 cd(@__DIR__)
-CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
 
 download(
     "https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/apply_style.jl",
