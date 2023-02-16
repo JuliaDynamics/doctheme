@@ -31,3 +31,10 @@ format = Documenter.HTML(
 )
 ```
 as a keyword argument to `makedocs`.
+
+It is also usefull to add the following to `.gitignore`:
+```
+*.css
+*.scss
+*style.jl
+```
