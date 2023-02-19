@@ -2,39 +2,41 @@
 
 *(requires at least documenter `v0.24.6`)*
 
-To use the style, first ensure that `Documenter, DocumenterTools, CairoMakie` are in the `docs/Project.toml` file of the repo.
+This repo provides a unified style for Documenter.jl documentation build of the packages of JuliaDynamics, and also provides a simplified way to apply it on a repo.
 
-Then, in the `docs/make.jl` file add the following at the start of the file:
+First, ensure that `Documenter, DocumenterTools, CairoMakie` are in the `docs/Project.toml` file of the package. All other packages that are used in the docbuild should be there as well! The main package doesn't need to be there as it already exists in the global environment during docbuilding.
 
-```julia
-cd(@__DIR__)
-
-import Downloads
-Downloads.download(
-    "https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/apply_style.jl",
-    joinpath(@__DIR__, "apply_style.jl")
-)
-include("apply_style.jl")
-
-using PackageName
-```
-and the theme will be applied automatically.
-
-Because we are using Google fonts, also use use
-```julia
-format = Documenter.HTML(
-    prettyurls = CI,
-    assets = [
-        asset("https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro&display=swap", class=:css),
-    ],
-    collapselevel = 3,
-)
-```
-as a keyword argument to `makedocs`.
-
-It is also usefull to add the following to `.gitignore`:
+Second, add the following to `.gitignore`:
 ```
 *.css
 *.scss
 *style.jl
 ```
+
+Third, make the `docs/make.jl` file of the package be like so:
+
+
+```julia
+cd(@__DIR__)
+
+using RecurrenceAnalysis
+
+RQA_PAGES = [
+    "index.md",
+    "rplots.md",
+    "quantification.md",
+    "networks.md",
+    "windowed.md",
+]
+
+import Downloads
+Downloads.download(
+    "https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/build_docs_with_style.jl",
+    joinpath(@__DIR__, "build_docs_with_style.jl")
+)
+include("build_docs_with_style.jl")
+
+build_docs_with_style(RQA_PAGES, RecurrenceAnalysis)
+```
+
+The function `build_docs_with_style` may take a variable number of modules as arguments to include in the doc build, and the first module becomes the site name and deploy location. There are also some keyword arguments to set the author, and other options and all other keywords are propagated to the `makedocs` function.
