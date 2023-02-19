@@ -21,7 +21,7 @@ cd(@__DIR__)
 
 using RecurrenceAnalysis
 
-RQA_PAGES = [
+pages = [
     "index.md",
     "rplots.md",
     "quantification.md",
@@ -36,7 +36,7 @@ Downloads.download(
 )
 include("build_docs_with_style.jl")
 
-build_docs_with_style(RQA_PAGES, RecurrenceAnalysis)
+build_docs_with_style(pages, RecurrenceAnalysis)
 ```
 
 The function `build_docs_with_style` may take a variable number of modules as arguments to include in the doc build, and the first module becomes the site name and deploy location. There are also some keyword arguments to set the author, and other options and all other keywords are propagated to the `makedocs` function.

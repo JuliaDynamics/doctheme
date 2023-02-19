@@ -22,7 +22,7 @@ using CairoMakie
 Downloads.download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/style.jl", joinpath(@__DIR__, "style.jl"))
 include("style.jl")
 
-function build_docs_with_style(pages, modules...; authors =  "George Datseris", draft = false, kwargs...)
+function build_docs_with_style(pages, modules...; authors = "George Datseris", draft = false, kwargs...)
     makedocs(;
         modules = [modules...],
         format = Documenter.HTML(
