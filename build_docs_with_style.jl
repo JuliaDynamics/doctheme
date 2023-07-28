@@ -22,8 +22,8 @@ using CairoMakie
 Downloads.download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/style.jl", joinpath(@__DIR__, "style.jl"))
 include("style.jl")
 
-function build_docs_with_style(pages, modules...; authors = "George Datseris", draft = false, kwargs...)
-    makedocs(;
+function build_docs_with_style(pages, modules...; bib = nothing, authors = "George Datseris", draft = false, kwargs...)
+    settings = (
         modules = [modules...],
         format = Documenter.HTML(
             prettyurls = CI,
@@ -39,6 +39,12 @@ function build_docs_with_style(pages, modules...; authors = "George Datseris", d
         doctest = false,
         kwargs...
     )
+
+    if isnothing(bib)
+        makedocs(; settings...)
+    else
+        makedocs(bib; settings...)
+    end
 
     if CI
         deploydocs(
