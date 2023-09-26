@@ -1,4 +1,10 @@
 CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
+
+# For now, we limit Documenter to v0.27, because no doc builds, see here:
+# https://github.com/JuliaDocs/DocumenterTools.jl/issues/80
+import Pkg
+Pkg.add("Documenter"; version = "0.27")
+
 # Load documenter
 using Documenter
 using DocumenterTools: Themes
