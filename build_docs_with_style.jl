@@ -1,5 +1,8 @@
 CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
 
+import Pkg
+Pkg.pkg"add Documenter@0.27"
+
 # Load documenter
 using Documenter
 using DocumenterTools: Themes
