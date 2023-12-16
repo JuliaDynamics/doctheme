@@ -59,7 +59,7 @@ $admonition-header-background: (
 @import "documenter/variables";
 @import "bulma/utilities/all";
 @import "bulma/base/minireset.sass";
-@import "bulma/base/helpers.sass";
+@import "sass/helpers/_all";
 
 html.theme--#{$themename} {
   @import "bulma/base/generic.sass";
