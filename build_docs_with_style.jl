@@ -54,7 +54,7 @@ function build_docs_with_style(pages, modules...; bib = nothing, authors = "Geor
     if isnothing(bib)
         makedocs(; settings...)
     else
-        makedocs(bib; settings...)
+        makedocs(; plugins=[bib], settings...)
     end
 
     if CI
