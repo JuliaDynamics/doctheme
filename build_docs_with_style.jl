@@ -48,6 +48,7 @@ function build_docs_with_style(pages, modules...; bib = nothing, authors = "Geor
         pages,
         draft,
         doctest = false,
+        checkdocs = :exported,
         kwargs...
     )
 
