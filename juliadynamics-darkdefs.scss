@@ -40,6 +40,8 @@ $input-focus-border-color: $mainwhite;
 
 $documenter-docstring-shadow: 3px 3px 4px invert($shadow-color);
 
+
+
 // Admonition stuff
 $admbg: lighten-color($body-background-color, 0.5);
 $admonition-background: (
@@ -49,6 +51,10 @@ $admonition-background: (
 $admonition-header-background: (
   'default': #ba3f1f, 'warning': #a88b17, 'danger': #c7524c,
   'success': #42ac68, 'info': #28c);
+
+// Deprecations
+$admonition-body-color: null;
+$admonition-header-color: null;
 
 // All secondary themes have to be nested in a theme--$(themename) class. When Documenter
 // switches themes, it applies this class to <html> and then disables the primary
