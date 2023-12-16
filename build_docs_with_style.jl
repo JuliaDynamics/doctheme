@@ -9,12 +9,13 @@ using DocumenterTools: Themes
 ENV["JULIA_DEBUG"] = "Documenter"
 
 # For easier debugging when downloading from a specific branch.
-github_user = "kahaaga"
-branch = "documenter_v1"
+github_user = "JuliaDynamics"
+branch = "master"
+download_path = "https://raw.githubusercontent.com/$github_user/doctheme/$branch"
 
 import Downloads
 for file in ("juliadynamics-lightdefs.scss", "juliadynamics-darkdefs.scss", "juliadynamics-style.scss")
-    Downloads.download("https://raw.githubusercontent.com/$github_user/doctheme/$branch/$file", joinpath(@__DIR__, file))
+    Downloads.download("$download_path/$file", joinpath(@__DIR__, file))
 end
 
 # create the themes
@@ -30,7 +31,7 @@ Themes.compile(joinpath(@__DIR__, "juliadynamics-dark.scss"), joinpath(@__DIR__,
 
 # Download and apply CairoMakie plotting style
 using CairoMakie
-Downloads.download("https://raw.githubusercontent.com/$github_user/doctheme/$branch/style.jl", joinpath(@__DIR__, "style.jl"))
+Downloads.download("$download_path/style.jl", joinpath(@__DIR__, "style.jl"))
 include("style.jl")
 
 function build_docs_with_style(pages, modules...; bib = nothing, authors = "George Datseris", draft = false, kwargs...)
