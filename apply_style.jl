@@ -3,10 +3,16 @@ CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== 
 using Documenter
 using DocumenterTools: Themes
 ENV["JULIA_DEBUG"] = "Documenter"
+
+# For easier debugging when downloading from a specific branch.
+github_user = "JuliaDynamics"
+branch = "master"
+download_path = "https://raw.githubusercontent.com/$github_user/doctheme/$branch"
+
 # download the themes
 import Downloads
 for file in ("juliadynamics-lightdefs.scss", "juliadynamics-darkdefs.scss", "juliadynamics-style.scss")
-    Downloads.download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/$file", joinpath(@__DIR__, file))
+    Downloads.download("$download_path/$file", joinpath(@__DIR__, file))
 end
 # create the themes
 for w in ("light", "dark")
@@ -19,5 +25,5 @@ Themes.compile(joinpath(@__DIR__, "juliadynamics-light.scss"), joinpath(@__DIR__
 Themes.compile(joinpath(@__DIR__, "juliadynamics-dark.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-dark.css"))
 # Download and apply CairoMakie plotting style
 using CairoMakie
-Downloads.download("https://raw.githubusercontent.com/JuliaDynamics/doctheme/master/style.jl", joinpath(@__DIR__, "style.jl"))
+Downloads.download("$download_path/style.jl", joinpath(@__DIR__, "style.jl"))
 include("style.jl")
