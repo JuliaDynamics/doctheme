@@ -68,7 +68,7 @@ $admonition-header-color: null;
 
 html.theme--#{$themename} {
   @extend .is-size-7 !optional;
-  
+
   @import "bulma/base/generic.sass";
 
   @import "documenter/overrides";
@@ -89,10 +89,7 @@ html.theme--#{$themename} {
   @import "documenter/theme_overrides";
 
   // $shadow-color: #202224;
-  @warn 'This is a warning';
-
-  @extend .is-size-7;
-
+  
   #documenter .docs-sidebar { // This makes sidebar have shadow at all displays
     border-right: none;
     box-shadow: 1.2*$shadow-size 0rem 1*$shadow-blur invert($shadow-color);
