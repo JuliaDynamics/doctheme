@@ -87,6 +87,9 @@ html.theme--#{$themename} {
   @import "documenter/theme_overrides";
 
   // $shadow-color: #202224;
+  @warn 'This is a warning';
+
+  @extend .is-size-7;
 
   #documenter .docs-sidebar { // This makes sidebar have shadow at all displays
     border-right: none;
