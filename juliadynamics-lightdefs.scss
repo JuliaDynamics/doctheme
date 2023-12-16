@@ -46,10 +46,6 @@ $documenter-sidebar-size: 1.0em; // the default is 1.0 as well
 $input-hover-border-color: $secondcolor;
 $input-focus-border-color: $mainwhite;
 
-// Deprecations
-$admonition-body-color: null;
-$admonition-header-color: null;
-
 // Include the original theme which will now use the updated variables.
 // This should be the last thing in the SCSS file.
 @import "documenter-light";
