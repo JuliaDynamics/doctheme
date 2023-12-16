@@ -6,9 +6,10 @@
 
 // Deprecations
 $admonition-body-color: null;
-// Deprecations
 $admonition-body-color: null;
 $admonition-header-color: null;
+
+@import "sass/helpers/all";
 @extend .is-size-7 !optional;
 
 ////////////////////////////////////////////////////////////////////////
