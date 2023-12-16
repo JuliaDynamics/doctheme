@@ -1,6 +1,6 @@
 # Documentation theme for the packages of JuliaDynamics
 
-*(requires at least documenter `v0.24.6`)*
+*(requires at least Documenter `v1.0`)*
 
 This repo provides a unified style for Documenter.jl documentation build of the packages of JuliaDynamics, and also provides a simplified way to apply it on a repo.
 
