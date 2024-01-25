@@ -50,7 +50,7 @@ function build_docs_with_style(pages, modules...; bib = nothing, authors = "Geor
         draft,
         doctest = false,
         checkdocs = :exported,
-        linecheck_timeout = 2,
+        linkcheck_timeout = 2,
         # The following Documenter fails will ERROR the docbuild!
         warnonly = Documenter.except(
             :example_block, :eval_block, :docs_block, :cross_references
