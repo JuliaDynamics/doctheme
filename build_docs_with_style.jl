@@ -34,15 +34,31 @@ using CairoMakie
 Downloads.download("$download_path/style.jl", joinpath(@__DIR__, "style.jl"))
 include("style.jl")
 
-function build_docs_with_style(pages, modules...; bib = nothing, authors = "George Datseris", draft = false, kwargs...)
+"""
+    build_docs_with_style(pages::Vector, modules... ;
+        bib = nothing, authors = "George Datseris and contributors",
+        htmlkw = NamedTuple(), kw...
+    )
+
+Call the `makedocs` function with some predefined style components.
+The first module dictates site name, while the rest need to be included
+to expand and cross-referrence docstrings from other modules.
+`kw` are propagated to `makedocs` while `htmlkw` are propagated to
+`Documenter.HTML`.
+"""
+function build_docs_with_style(pages, modules...;
+        bib = nothing, authors = "George Datseris", draft = false,
+        htmlkw = NamedTuple(), kwargs...
+    )
     settings = (
         modules = [modules...],
-        format = Documenter.HTML(
+        format = Documenter.HTML(;
             prettyurls = CI,
             assets = [
                 asset("https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro&display=swap", class=:css),
             ],
             collapselevel = 3,
+            htmlkw...,
         ),
         sitename = "$(modules[1]).jl",
         authors,
