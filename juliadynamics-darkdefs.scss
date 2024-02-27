@@ -109,65 +109,23 @@ html.theme--#{$themename} {
     color: #f8f8f2;
   }
 
+  $admonition-colors: (
+  'default', 'info', 'success', 'warning',
+  'danger','compat',
+) !default;
   // extend this to all types
   .admonition {
-    &.is-warning {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
-      }
-    }
-    &.is-default {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
+    @each $name, $pair in $admonition-colors {
+      &.is-#{$name} {
+        > .admonition-body {
+          color:#fff;
+        }
+        > .admonition-header {
+          color:#fff;
+        }
       }
     }
-    &.is-body {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
-      }
-    }
-    &.is-info {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
-      }
-    }
-    &.is-success {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
-      }
-    }  
-    &.is-danger {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
-      }
-    }
-    &.is-compat {
-      > .admonition-body {
-        color:#fff;
-      }
-      > .admonition-header {
-        color:#fff;
-      }
-    }  
-
+  
 }
 }
 
