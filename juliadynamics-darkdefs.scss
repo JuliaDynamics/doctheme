@@ -53,9 +53,6 @@ $admonition-header-background: (
   'success': #42ac68, 'info': #28c);
 
 // Deprecations
-$admonition-body-color: null;
-$admonition-body-color: null;
-$admonition-header-color: null;
 
 // All secondary themes have to be nested in a theme--$(themename) class. When Documenter
 // switches themes, it applies this class to <html> and then disables the primary
@@ -111,4 +108,25 @@ html.theme--#{$themename} {
   .hljs-subst {
     color: #f8f8f2;
   }
+
+  $admonition-colors: (
+  'default', 'info', 'success', 'warning',
+  'danger','compat',
+) !default;
+  // extend this to all types
+  .admonition {
+    @each $name, $pair in $admonition-colors {
+      &.is-#{$name} {
+        > .admonition-body {
+          color:#fff;
+        }
+        > .admonition-header {
+          color:#fff;
+        }
+      }
+    }
+  
 }
+}
+
+
