@@ -41,17 +41,8 @@ $input-focus-border-color: $mainwhite;
 
 $documenter-docstring-shadow: 3px 3px 4px invert($shadow-color);
 
-
-
-// Admonition stuff
-//$admbg: lighten-color($body-background-color, 0.5);
-//$admonition-background: (
-//  'default': $admbg, 'info': $admbg, 'success': $admbg, 'warning': $admbg,
-//  'danger': $admbg, 'compat': $admbg
-//);
-//$admonition-header-background: (
-//  'default': #ba3f1f, 'warning': #a88b17, 'danger': #c7524c,
-//  'success': #42ac68, 'info': #28c);
+// This line is required after https://github.com/JuliaDocs/Documenter.jl/pull/2499
+$admonition-default: $darkbg;
 
 // All secondary themes have to be nested in a theme--$(themename) class. When Documenter
 // switches themes, it applies this class to <html> and then disables the primary
