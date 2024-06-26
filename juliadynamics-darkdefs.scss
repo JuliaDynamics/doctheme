@@ -109,23 +109,6 @@ html.theme--#{$themename} {
   }
 
 
-  $admonition-colors: (
-  'default', 'info', 'success', 'warning',
-  'danger','compat',
-) !default;
-  // extend this to all types
-  .admonition {
-    @each $name, $pair in $admonition-colors {
-      &.is-#{$name} {
-        > .admonition-body {
-          color:#fff;
-        }
-        > .admonition-header {
-          color:#fff;
-        }
-      }
-    }
-  }
 
   // fix for the settings/modal panel
   .modal-card-head {
