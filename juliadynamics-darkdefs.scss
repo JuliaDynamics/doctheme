@@ -43,6 +43,8 @@ $documenter-docstring-shadow: 3px 3px 4px invert($shadow-color);
 
 // This line is required after https://github.com/JuliaDocs/Documenter.jl/pull/2499
 $admonition-default: $darkbg;
+// This line is required after https://github.com/JuliaDocs/Documenter.jl/pull/2526
+$todo: $purple;
 
 // All secondary themes have to be nested in a theme--$(themename) class. When Documenter
 // switches themes, it applies this class to <html> and then disables the primary
