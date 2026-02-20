@@ -26,7 +26,7 @@ $documenter-docstring-header-background: lighten-color($body-background-color, 0
 
 
 // Sidebar
-$documenter-sidebar-background: $maincolor //background color for sidebar, same for both themes
+$documenter-sidebar-background: $maincolor; //background color for sidebar, same for both themes
 $documenter-sidebar-color: $text; //font color for sidebar
 $documenter-sidebar-menu-hover-color: $documenter-sidebar-color;
 $documenter-sidebar-menu-hover-background: darken-color($documenter-sidebar-background, 1.2);
