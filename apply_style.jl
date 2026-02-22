@@ -18,7 +18,7 @@ end
 for w in ("light", "dark")
     header = read(joinpath(@__DIR__, "juliadynamics-style.scss"), String)
     theme = read(joinpath(@__DIR__, "juliadynamics-$(w)defs.scss"), String)
-    write(joinpath(@__DIR__, "juliadynamics-$(w).scss"), header*"\n"*theme)
+    write(joinpath(@__DIR__, "juliadynamics-$(w).scss"), header * "\n" * theme)
 end
 # compile the themes
 Themes.compile(joinpath(@__DIR__, "juliadynamics-light.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-light.css"))
