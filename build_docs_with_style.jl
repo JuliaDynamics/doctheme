@@ -35,23 +35,29 @@ Downloads.download("$download_path/style.jl", joinpath(@__DIR__, "style.jl"))
 include("style.jl")
 
 """
-    build_docs_with_style(pages::Vector, modules... ;
-        bib = nothing, authors = "George Datseris and contributors",
-        htmlkw = NamedTuple(), kw...
-    )
+    build_docs_with_style(pages::Vector, modules... ; kw...)
 
 Call the `makedocs` function with some predefined style components.
 The first module dictates site name, while the rest need to be included
 to expand and cross-referrence docstrings from other modules.
-`kw` are propagated to `makedocs` while `htmlkw` are propagated to
+`kw` are propagated to `makedocs` while the keyword `htmlkw` is propagated to
 `Documenter.HTML`.
 """
 function build_docs_with_style(
         pages, modules...;
-        bib = nothing, authors = "George Datseris", draft = false,
+        bib = nothing, plugins = nothing, authors = "George Datseris and contributors",
         htmlkw = NamedTuple(), kwargs...
     )
-    settings = (
+
+    if isnothing(plugins)
+        if !isnothing(bib)
+            plugins = [bib,]
+        else
+            plugins = []
+        end
+    end
+
+    makedocs(;
         modules = [modules...],
         format = Documenter.HTML(;
             prettyurls = CI,
@@ -64,20 +70,16 @@ function build_docs_with_style(
         sitename = "$(modules[1]).jl",
         authors,
         pages,
-        draft,
         doctest = false,
         checkdocs = :exported,
+        linkcheck=true,
         linkcheck_timeout = 2,
+        expandfirst = ["index.md"],
+        doctest=false,
         # The following Documenter fails will NOT ERROR the docbuild!
-        warnonly = [:doctest, :missing_docs],
-        kwargs...,
+        warnonly = [:doctest],
+        kwargs..., plugins,
     )
-
-    if isnothing(bib)
-        makedocs(; settings...)
-    else
-        makedocs(; plugins = [bib], settings...)
-    end
 
     return if CI
         deploydocs(
@@ -86,5 +88,4 @@ function build_docs_with_style(
             push_preview = true
         )
     end
-
 end
